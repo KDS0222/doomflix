@@ -6,7 +6,7 @@ const MainContainer = styled.div`
   background-color: #000000;
   padding-top: 100px;
   color: #ffffff;
-  overflow-x: hidden;
+  padding-bottom: 60px;
 `;
 
 const Main = (props) => {
