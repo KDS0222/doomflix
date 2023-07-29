@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { IoMdSearch } from "react-icons/io";
 import {Link} from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const NavBottonContainer = styled.div`
   display: flex;
@@ -36,11 +37,17 @@ const SearchInput = styled.input`
 `;
 
 const NavBotton = (props) => {
+  const [inputValue, setInputValue] = useState("");
   
   const SearchInputChangeHandler = (e) => {
-    props.inputSearchValue(e.target.value);
+    setInputValue(e.target.value)
+    props.inputSearchValue(e.target.value)
   };
 
+  useEffect(() => {
+    console.log('컴포넌트가 화면에 나타남');
+    props.inputSearchValue(inputValue);
+  }, [inputValue]);
 
   return (
     <NavBottonContainer>

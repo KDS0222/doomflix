@@ -14,16 +14,15 @@ function App() {
   const inputSearchValue = (data) => {
     setSearchValue(data);
 
-    const newObj = {
-
-    };
+    const newObj = {};
 
     console.log("newObj------------");
 
-    Object.keys(movieData).map((key) =>  
-     newObj[key] = movieData[key].filter(
-        value => value.title.includes(searchValue)
-      )
+    Object.keys(movieData).map(
+      (key) =>
+        (newObj[key] = movieData[key].filter((value) =>
+          value.title.toLowerCase().includes(searchValue)
+        ))
     );
 
     setSearchFilter(newObj);
