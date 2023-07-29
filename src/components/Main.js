@@ -9,7 +9,7 @@ const MainContainer = styled.div`
   padding-bottom: 60px;
   min-height: calc(100vh - 100px);
 `;
-g
+
 const Main = (props) => {
   return (
     <MainContainer>
