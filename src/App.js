@@ -71,14 +71,16 @@ function App() {
     const upcomingResult = await upcomingResponse.json();
 
     const obj = {
-      nowplaying: result.results,
-      popular: popularResult.results,
-      rated: ratedResult.results,
-      upcoming: upcomingResult.results,
+      nowplaying: result.results.slice(10),
+      popular: popularResult.results.slice(10),
+      rated: ratedResult.results.slice(10),
+      upcoming: upcomingResult.results.slice(10),
     };
 
     setMovieData(obj);
     setSearchFilter(obj);
+
+    console.log(obj);
   };
 
   return (

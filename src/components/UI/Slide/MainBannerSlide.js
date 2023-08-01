@@ -20,9 +20,11 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const SwiperSlideCustom = styled(SwiperSlide)`
   height: 480px;
   object-fit: cover;
-`
+`;
 
 const MainBannerSlide = (props) => {
+  {props.movieData.nowplaying &&
+  console.log(props.movieData.nowplaying.slice(10))}
   return (
     <div>
       <Swiper
@@ -38,7 +40,6 @@ const MainBannerSlide = (props) => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
-        
       >
         {props.movieData.nowplaying &&
           props.movieData.nowplaying.map((value) => (
