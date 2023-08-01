@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import MainBannerSlide from "./UI/Slide/MainBannerSlide";
 import MainContentsSlide from "./UI/Slide/MainContentsSlide";
 
 const MainContainer = styled.div`
@@ -13,7 +12,6 @@ const MainContainer = styled.div`
 const Main = (props) => {
   return (
     <MainContainer>
-      <MainBannerSlide movieData={props.movieData} />
       <MainContentsSlide movieData={props.movieData} />
     </MainContainer>
   );
