@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const SlideImgBox = styled.img`
   width: 100%;
@@ -7,9 +8,8 @@ const SlideImgBox = styled.img`
   cursor: pointer;
 `;
 
-
 const SlideImg = (props) => {
-    return <SlideImgBox src={props.src} />
-}
+  return <SlideImgBox src={props.src} />;
+};
 
 export default SlideImg;

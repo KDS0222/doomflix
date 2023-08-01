@@ -1,48 +1,51 @@
-import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import SlideImg from "./SlideImg";
-import SlideBg from "./SlideBg";
-import SliderContents from "./SliderContents";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import uuid from "react-uuid";
 
-const SlideBox = styled.div`
-  height: 300px;
-  border-radius: 10px;
-`;
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const ContentsSlide = (props) => {
-  const settings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-  };
-
   return (
     <div>
-      <Slider {...settings}>
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+        
+      >
         {props.popular &&
           props.popular.map((value) => (
-            <SlideBox key={uuid()}>
-              <SlideBg key={uuid()}>
-                <SliderContents key={uuid()}>
-                  <Link to={"/details/" + value.id}>
-                    <SlideImg key={uuid()}
-                      src={
-                        "https://image.tmdb.org/t/p/w500" + value.backdrop_path
-                      }
-                    />
-                  </Link>
-                </SliderContents>
-              </SlideBg>
-            </SlideBox>
+            <SwiperSlide key={uuid()}>
+              <Link to={"/details/" + value.id} key={uuid()}>
+                <SlideImg
+                  key={uuid()}
+                  src={"https://image.tmdb.org/t/p/w500" + value.backdrop_path}
+                />
+              </Link>
+            </SwiperSlide>
           ))}
-      </Slider>
+      </Swiper>
     </div>
   );
 };

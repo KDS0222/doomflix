@@ -19,8 +19,6 @@ const DetailsContainer = styled.div`
   background-color: #000000;
 `;
 
-
-
 const Details = () => {
   const [movieDetails, setMovieDetails] = useState("");
   const params = useParams();
@@ -46,10 +44,10 @@ const Details = () => {
         <DetailsContainer>
           <img
             src={"https://image.tmdb.org/t/p/w500" + movieDetails.poster_path}
+            alt="image설명"
           />
 
           <MovieDetailBox movieDetails={movieDetails} />
-          
         </DetailsContainer>
       </DetailsBox>
     </NavMainMargin>

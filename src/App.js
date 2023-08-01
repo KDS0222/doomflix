@@ -11,6 +11,9 @@ function App() {
   const [searchFilter, setSearchFilter] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
+  
+
+
   const inputSearchValue = (data) => {
     setSearchValue(data);
 
@@ -32,7 +35,21 @@ function App() {
     fetchMovieData();
   }, []);
 
+
+  /*
+  function fetchApiFunc(apiUrl, options) {
+
+    // headers: ,, 
+
+    const data = fetch(apiUrl);
+
+    return data;
+
+  }*/
+
   const fetchMovieData = async () => {
+
+
     const response = await fetch(
       "https://api.themoviedb.org/3/movie/now_playing?api_key=1efe7e9dcfe999d6d25a99f91164d434&page=1"
     );

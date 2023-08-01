@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import SlideContentsBox from "./SlideContentsBox";
 import CardContainer from "./CardContainer";
 
