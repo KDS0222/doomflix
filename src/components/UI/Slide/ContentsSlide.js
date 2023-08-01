@@ -31,7 +31,7 @@ const ContentsSlide = (props) => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className="Main__mySwiper"
         
       >
         {props.popular &&
