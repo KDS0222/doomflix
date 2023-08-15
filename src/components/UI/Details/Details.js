@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavMainMargin from "../Nav/NavMainMargin";
+import NavFixedInterval from "../Nav/NavFixedInterval";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MovieDetailBox from "./MovieDetailBox";
@@ -39,7 +39,7 @@ const Details = () => {
   }, []);
 
   return (
-    <NavMainMargin>
+    <NavFixedInterval>
       <DetailsBox>
         <DetailsContainer>
           <img
@@ -50,7 +50,7 @@ const Details = () => {
           <MovieDetailBox movieDetails={movieDetails} />
         </DetailsContainer>
       </DetailsBox>
-    </NavMainMargin>
+    </NavFixedInterval>
   );
 };
 

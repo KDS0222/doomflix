@@ -5,14 +5,13 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Main from "./components/Main";
 import { useState, useEffect } from "react";
 import Details from "./components/UI/Details/Details";
+import SingIn from "./components/Layout/Form/SingIn";
+import SingUp from "./components/Layout/Form/SingUp";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
   const [searchFilter, setSearchFilter] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
-  
-
 
   const inputSearchValue = (data) => {
     setSearchValue(data);
@@ -35,7 +34,6 @@ function App() {
     fetchMovieData();
   }, []);
 
-
   /*
   function fetchApiFunc(apiUrl, options) {
 
@@ -48,11 +46,10 @@ function App() {
   }*/
 
   const fetchMovieData = async () => {
-
-
     const response = await fetch(
       "https://api.themoviedb.org/3/movie/now_playing?api_key=1efe7e9dcfe999d6d25a99f91164d434&page=1"
     );
+
     const result = await response.json();
 
     const popularResponse = await fetch(
@@ -92,6 +89,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Main movieData={searchFilter} />}></Route>
         <Route path="/details/:id" element={<Details />}></Route>
+
+        <Route path="/singIn" element={<SingIn />} />
+        <Route path="/singUp" element={<SingUp />} />
       </Routes>
     </BrowserRouter>
   );

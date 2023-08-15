@@ -20,7 +20,7 @@ const ContentsSlide = (props) => {
   return (
     <div>
       <Swiper
-        slidesPerView={props.slidesPerView}
+        slidesPerView={3}
         spaceBetween={30}
         autoplay={{
           delay: 2500,
@@ -40,7 +40,8 @@ const ContentsSlide = (props) => {
               <Link to={"/details/" + value.id} key={uuid()}>
                 <SlideImg
                   key={uuid()}
-                  src={"https://image.tmdb.org/t/p/w500" + value.backdrop_path}
+
+                  src={"https://image.tmdb.org/t/p/w500" + value.poster_path}
                 />
               </Link>
             </SwiperSlide>

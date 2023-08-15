@@ -13,7 +13,7 @@ const SlideContentsBox = (props) => {
   return (
     <>
       <ContentTitle marginBottom="20px">{props.children}</ContentTitle>
-      <ContentsSlide popular={props.movieData} slidesPerView="3"/>
+      <ContentsSlide popular={props.movieData}/>
     </>
   );
 };

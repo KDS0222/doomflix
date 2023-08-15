@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import NavMenu from "./NavMenu";
-
+import { Routes, Route, Link } from "react-router-dom";
+import SingIn from "../../Layout/Form/SingIn";
 
 const NavTopBox = styled.div`
   height: 34px;
@@ -23,13 +24,25 @@ const NavTopHr = styled.div`
   border-bottom: 1px solid #2f2f2f;
 `;
 
+const NavMenuLink = styled(Link)`
+  color: #a5a5a5;
+`
+
 const NavTop = () => {
   return (
     <NavTopHr>
       <NavTopBox>
         <NavMenuUl>
-          <NavMenu>로그인</NavMenu>
-          <NavMenu>마이페이지</NavMenu>
+
+          <NavMenu>
+            <NavMenuLink to="/singIn">로그인</NavMenuLink>
+          </NavMenu>
+
+          <NavMenu>
+            <NavMenuLink to="/singUp">회원가입</NavMenuLink>
+          </NavMenu>
+
+          {/* <NavMenu>마이페이지</NavMenu> */}
         </NavMenuUl>
       </NavTopBox>
     </NavTopHr>
