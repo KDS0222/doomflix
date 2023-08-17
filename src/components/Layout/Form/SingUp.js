@@ -1,8 +1,11 @@
 import Alignment from "../../UI/Alignment";
 import NavFixedInterval from "../../UI/Nav/NavFixedInterval";
 import styled from "styled-components";
-
 import { useForm } from "react-hook-form";
+
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
+import { Report } from "notiflix/build/notiflix-report-aio";
 
 const LoginFormBox = styled.form`
   background-color: #252525;
@@ -59,7 +62,22 @@ function SingUp() {
     handleSubmit,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    Confirm.show(
+      "알림",
+      "회원가입 하시겠습니까?",
+      "Yes",
+      "No",
+      () => {
+        Report.success(
+          "회원가입 완료!",
+          "축하합니다. 회원가입에 성공했습니다.",
+          "확인"
+        );
+      },
+      () => {
+        Report.info("알림 정보", "회원가입이 취소되었습니다.", "확인");
+      }
+    );
   };
 
   return (
@@ -78,7 +96,7 @@ function SingUp() {
             placeholder="이메일을 입력해주세요."
           />
           {errors.id && (
-            <InputErrors>이메일을 옳바르게 입력해주세요.</InputErrors>
+            <InputErrors>이메일 형식이 옳바르지 않습니다.</InputErrors>
           )}
 
           <Input

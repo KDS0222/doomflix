@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const SlideImgBox = styled.img`
   width: 100%;

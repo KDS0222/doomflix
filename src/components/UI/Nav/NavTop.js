@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import NavMenu from "./NavMenu";
-import { Routes, Route, Link } from "react-router-dom";
-import SingIn from "../../Layout/Form/SingIn";
+import { Link } from "react-router-dom";
 
 const NavTopBox = styled.div`
   height: 34px;
