@@ -47,16 +47,10 @@ const Details = (props) => {
     setVideo(videoKey);
   };
 
-  console.log(props);
-
   useEffect(() => {
     DetailsFetch();
   }, [params.id]);
 
-
-  console.log(params.id);
-
-  console.log(props.movieData);
   return (
     <NavFixedInterval>
       <DetailsBox>

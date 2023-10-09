@@ -76,8 +76,6 @@ function App() {
 
     setMovieData(obj);
     setSearchFilter(obj);
-
-    console.log(obj);
   };
 
   return (

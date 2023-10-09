@@ -3,7 +3,7 @@ import styled from "styled-components";
 const WrapperBox = styled.div`
   max-width: ${(props) => props.maxWidth};
   width: ${(props) => props.width};
-  height: ${(props) => props.heigth};
+  height: ${(props) => props.height};
   display: ${(props) => props.display};
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};

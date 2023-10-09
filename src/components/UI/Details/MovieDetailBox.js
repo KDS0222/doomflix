@@ -37,8 +37,6 @@ const YoubuteVideo = styled.iframe`
 const MovieDetailBox = (props) => {
   const movieDetails = props.movieDetails;
 
-
-  console.log(props);
   return (
     <MovieDetailInfoBox>
       {props.videoKey != "" ? (
