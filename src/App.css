@@ -12,3 +12,28 @@ a{
 .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
     display: none;
 }
+
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after, .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+    background-color: rgba(0, 0, 0, 0.6);
+
+}
+
+.swiper-button-prev:after, .swiper-button-next:after{
+    font-size: 40px;
+}
+
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after, .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+    padding: 10px;
+}
+
+.swiper-button-prev, .swiper-button-next{
+    color: inherit !important;
+    width: calc(var(--swiper-navigation-size) / 44 * 21) !important;
+    opacity: 0 !important;
+    transition: 0.3s;
+}
+
+.swiper:hover .swiper-button-prev, .swiper:hover .swiper-button-next{
+    opacity: 1 !important;
+    transition: 0.3s;
+}
