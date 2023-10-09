@@ -3,6 +3,8 @@ import NavFixedInterval from "../Nav/NavFixedInterval";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MovieDetailBox from "./MovieDetailBox";
+import SlideContentsBox from "../Slide/SlideContentsBox";
+import Wrapper from "../Wrapper";
 
 const DetailsBox = styled.div`
   background-color: #000000;
@@ -30,7 +32,9 @@ const Details = (props) => {
 
     const result = await response.json();
 
-    const viedoResponse = await fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=1efe7e9dcfe999d6d25a99f91164d434`);
+    const viedoResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=1efe7e9dcfe999d6d25a99f91164d434`
+    );
 
     const viedoResult = await viedoResponse.json();
 
@@ -43,10 +47,16 @@ const Details = (props) => {
     setVideo(videoKey);
   };
 
+  console.log(props);
+
   useEffect(() => {
     DetailsFetch();
-  }, []);
+  }, [params.id]);
 
+
+  console.log(params.id);
+
+  console.log(props.movieData);
   return (
     <NavFixedInterval>
       <DetailsBox>
@@ -59,6 +69,12 @@ const Details = (props) => {
           <MovieDetailBox videoKey={video} movieDetails={movieDetails} />
         </DetailsContainer>
       </DetailsBox>
+
+      <Wrapper maxWidth="1440px" margin="0 auto">
+        <SlideContentsBox movieData={props.recommendData.nowplaying}>
+          Recommend
+        </SlideContentsBox>
+      </Wrapper>
     </NavFixedInterval>
   );
 };

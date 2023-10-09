@@ -28,12 +28,19 @@ const SearchButton = styled.button`
 `;
 
 const SearchInput = styled.input`
-  height: 30px;
+  background-color: rgb(34, 35, 38);
+  width: 200px;
+  height: 40px;
   border: none;
-  border-radius: 10px;
-  padding: 0 20px;
+  border-radius: 4px;
+  padding: 0 12px;
   margin: ${(props) => props.margin};
   font-size: 14px;
+  color: #ffffff;
+
+  &::placeholder{
+    color: #ffffff;
+  }
 `;
 
 const NavBotton = (props) => {

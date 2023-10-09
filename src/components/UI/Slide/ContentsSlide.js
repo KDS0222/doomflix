@@ -12,10 +12,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import 'swiper/css/navigation';
+import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
+const scrollMoveHandler = () => {
+  window.scrollTo({ left: 0, top: 0 })
+};
 
 const ContentsSlide = (props) => {
   return (
@@ -33,15 +37,13 @@ const ContentsSlide = (props) => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="Main__mySwiper"
-        
       >
         {props.popular &&
           props.popular.map((value) => (
             <SwiperSlide key={uuid()}>
-              <Link to={"/details/" + value.id} key={uuid()}>
+              <Link onClick={scrollMoveHandler} to={"/details/" + value.id} key={uuid()}>
                 <SlideImg
                   key={uuid()}
-
                   src={"https://image.tmdb.org/t/p/w500" + value.poster_path}
                 />
               </Link>

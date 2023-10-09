@@ -88,7 +88,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main movieData={searchFilter} />}></Route>
-        <Route path="/details/:id" element={<Details />}></Route>
+        <Route path="/details/:id" element={<Details movieData={searchFilter} recommendData={movieData} />}></Route>
 
         <Route path="/singIn" element={<SingIn />} />
         <Route path="/singUp" element={<SingUp />} />

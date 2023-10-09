@@ -6,7 +6,7 @@ const AlignmentWrapper = styled.div`
     align-items: center;
     max-width: 1440px;
     margin: 0 auto;
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
 `
 
 function Alignment(props){

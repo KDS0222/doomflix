@@ -49,7 +49,7 @@ const MovieDetailBox = (props) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         ></YoubuteVideo>
-      ): <h1>꺼져</h1>}
+      ): null}
       <MovieTitle className="detailsTitle">{movieDetails.title}</MovieTitle>
 
       <Wrapper>
