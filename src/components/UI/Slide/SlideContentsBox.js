@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import ContentsSlide from "./ContentsSlide";
+import "../../../App.css";
+
 
 const ContentTitle = styled.div`
   font-size: 24px;
@@ -12,7 +14,7 @@ const ContentTitle = styled.div`
 const SlideContentsBox = (props) => {
   return (
     <>
-      <ContentTitle marginBottom="20px">{props.children}</ContentTitle>
+      <ContentTitle className="logo" marginBottom="20px">{props.children}</ContentTitle>
       <ContentsSlide popular={props.movieData}/>
     </>
   );

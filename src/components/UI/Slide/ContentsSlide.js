@@ -20,8 +20,8 @@ const ContentsSlide = (props) => {
   return (
     <div>
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        slidesPerView={5}
+        spaceBetween={20}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,

@@ -14,7 +14,7 @@ const NavBottonContainer = styled.div`
 `;
 
 const Logo = styled.h1`
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
   color: red;
 `;
@@ -45,7 +45,6 @@ const NavBotton = (props) => {
   };
 
   useEffect(() => {
-    console.log('컴포넌트가 화면에 나타남');
     props.inputSearchValue(inputValue);
   }, [inputValue]);
 
