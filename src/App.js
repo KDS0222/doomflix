@@ -53,7 +53,7 @@ function App() {
     const result = await response.json();
 
     const popularResponse = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=1efe7e9dcfe999d6d25a99f91164d434&page=2"
+      "https://api.themoviedb.org/3/movie/popular?api_key=1efe7e9dcfe999d6d25a99f91164d434&page=1"
     );
     const popularResult = await popularResponse.json();
 

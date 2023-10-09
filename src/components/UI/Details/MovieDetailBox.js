@@ -38,7 +38,7 @@ const MovieDetailBox = (props) => {
   const movieDetails = props.movieDetails;
 
 
-  console.log(props)
+  console.log(props);
   return (
     <MovieDetailInfoBox>
       {props.videoKey != "" ? (
@@ -49,7 +49,7 @@ const MovieDetailBox = (props) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         ></YoubuteVideo>
-      ): null}
+      ): <h1>꺼져</h1>}
       <MovieTitle className="detailsTitle">{movieDetails.title}</MovieTitle>
 
       <Wrapper>
@@ -60,7 +60,7 @@ const MovieDetailBox = (props) => {
 
         <ReviewContainer movieDetails={movieDetails} />
 
-        <Overview className="OverviewFont">{movieDetails.overview}</Overview>
+        <Overview className="OverviewFontg">{movieDetails.overview}</Overview>
       </Wrapper>
     </MovieDetailInfoBox>
   );
