@@ -1,8 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Koulen&family=Oswald:wght@300;400;500;600;700&display=swap');
 
 .logo{
     font-family: 'Anton', sans-serif;
+}
+
+.detailsTitle{
+    font-family: 'Oswald', sans-serif;   
+}
+
+.OverviewFont{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
 }
 
 a{

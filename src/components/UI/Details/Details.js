@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import MovieDetailBox from "./MovieDetailBox";
 
 const DetailsBox = styled.div`
-  background-color: gray;
+  background-color: #000000;
   width: 100%;
   height: calc(100vh - 100px);
 `;
@@ -15,12 +15,12 @@ const DetailsContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
-  align-items: flex-end;
   background-color: #000000;
 `;
 
-const Details = () => {
+const Details = (props) => {
   const [movieDetails, setMovieDetails] = useState("");
+  const [video, setVideo] = useState("");
   const params = useParams();
 
   const DetailsFetch = async () => {
@@ -30,8 +30,17 @@ const Details = () => {
 
     const result = await response.json();
 
-    console.log(result);
+    const viedoResponse = await fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=1efe7e9dcfe999d6d25a99f91164d434`);
+
+    const viedoResult = await viedoResponse.json();
+
+    const videoKey = viedoResult.results[0]?.key;
+
+    // const videoKey = viedoResult.results[0]? viedoResult.results[0].key : null;
+
     setMovieDetails(result);
+
+    setVideo(videoKey);
   };
 
   useEffect(() => {
@@ -47,7 +56,7 @@ const Details = () => {
             alt="image설명"
           />
 
-          <MovieDetailBox movieDetails={movieDetails} />
+          <MovieDetailBox videoKey={video} movieDetails={movieDetails} />
         </DetailsContainer>
       </DetailsBox>
     </NavFixedInterval>

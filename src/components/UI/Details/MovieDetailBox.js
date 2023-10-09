@@ -5,7 +5,6 @@ import ReviewContainer from "../Review/ReviewContainer";
 
 const MovieDetailInfoBox = styled.div`
   margin-left: 30px;
-  margin-bottom: 30px;
 
   & *:not(:first-child) {
     margin-top: 15px;
@@ -30,26 +29,41 @@ const GenresBox = styled.span`
   margin-right: 10px;
 `;
 
+const YoubuteVideo = styled.iframe`
+  width: 100%;
+  height: 500px;
+`
 
 const MovieDetailBox = (props) => {
-    const movieDetails = props.movieDetails;
+  const movieDetails = props.movieDetails;
 
-    return (
-        <MovieDetailInfoBox>
-            <MovieTitle>{movieDetails.title}</MovieTitle>
 
-            <Wrapper>
-              {movieDetails &&
-                movieDetails.genres.map((value) => (
-                  <GenresBox key={uuid()}>{value.name}</GenresBox>
-                ))}
+  console.log(props)
+  return (
+    <MovieDetailInfoBox>
+      {props.videoKey != "" ? (
+        <YoubuteVideo
+          src={`https://www.youtube.com/embed/${props.videoKey}?autoplay=1&mute=1`}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></YoubuteVideo>
+      ): null}
+      <MovieTitle className="detailsTitle">{movieDetails.title}</MovieTitle>
 
-              <ReviewContainer movieDetails={movieDetails} />
+      <Wrapper>
+        {movieDetails &&
+          movieDetails.genres.map((value) => (
+            <GenresBox className="detailsTitle" key={uuid()}>{value.name}</GenresBox>
+          ))}
 
-              <Overview>{movieDetails.overview}</Overview>
-            </Wrapper>
-          </MovieDetailInfoBox>
-    );
-}
+        <ReviewContainer movieDetails={movieDetails} />
+
+        <Overview className="OverviewFont">{movieDetails.overview}</Overview>
+      </Wrapper>
+    </MovieDetailInfoBox>
+  );
+};
 
 export default MovieDetailBox;

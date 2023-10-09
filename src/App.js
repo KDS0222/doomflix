@@ -1,7 +1,7 @@
 import "./App.css";
 import { Reset } from "styled-reset";
 import Nav from "./components/UI/Nav/Nav";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import { useState, useEffect } from "react";
 import Details from "./components/UI/Details/Details";

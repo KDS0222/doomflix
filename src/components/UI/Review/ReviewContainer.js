@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import reviewBg from "../../../images/ico_review_bg.png";
 import reviewStar from "../../../images/ico_review.png";
-import Wrapper from "../Wrapper";
+import "../../../App.css";
 
 const VoteAverageBox = styled.div`
   color: #ffffff;
@@ -34,7 +34,7 @@ const ReviewStar = styled.div`
 const ReviewContainer = (props) => {
   return (
     <VoteAverageBox>
-      <Wrapper>평점 : {(props.movieDetails.vote_average / 2).toFixed(1)}</Wrapper>
+      <div className="detailsTitle">평점 : {(props.movieDetails.vote_average / 2).toFixed(1)}</div>
 
       <ReviewBgBox>
         <ReviewStar width={(props.movieDetails.vote_average * 10).toFixed(1)} />
