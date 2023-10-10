@@ -5,20 +5,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import { useState, useEffect } from "react";
 import Details from "./components/UI/Details/Details";
-import SingIn from "./components/Layout/Form/SingIn";
-import SingUp from "./components/Layout/Form/SingUp";
+import SingIn from "./components/Layout/Form/SignIn";
+import SingUp from "./components/Layout/Form/SignUp";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
   const [searchFilter, setSearchFilter] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [userId, setUserId] = useState({ id: "", pwd: "" });
+
+  const userSignUp = (info) => {
+    setUserId(info);
+  };
 
   const inputSearchValue = (data) => {
     setSearchValue(data);
 
     const newObj = {};
-
-    console.log("newObj------------");
 
     Object.keys(movieData).map(
       (key) =>
@@ -86,10 +89,15 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main movieData={searchFilter} />}></Route>
-        <Route path="/details/:id" element={<Details movieData={searchFilter} recommendData={movieData} />}></Route>
+        <Route
+          path="/details/:id"
+          element={
+            <Details movieData={searchFilter} recommendData={movieData} />
+          }
+        ></Route>
 
-        <Route path="/singIn" element={<SingIn />} />
-        <Route path="/singUp" element={<SingUp />} />
+        <Route path="/singIn" element={<SingIn userInfo={userId} />} />
+        <Route path="/singUp" element={<SingUp userSignUp={userSignUp} />} />
       </Routes>
     </BrowserRouter>
   );

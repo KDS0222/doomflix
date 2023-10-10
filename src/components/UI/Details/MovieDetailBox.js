@@ -35,11 +35,11 @@ const YoubuteVideo = styled.iframe`
 `
 
 const MovieDetailBox = (props) => {
-  const movieDetails = props.movieDetails;
+  const movieDetails = props?.movieDetails;
 
   return (
     <MovieDetailInfoBox>
-      {props.videoKey != "" ? (
+      {props.videoKey !== "" ? (
         <YoubuteVideo
           src={`https://www.youtube.com/embed/${props.videoKey}?autoplay=1&mute=1`}
           title="YouTube video player"

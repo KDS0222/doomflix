@@ -1,8 +1,13 @@
 import Alignment from "../../UI/Alignment";
 import NavFixedInterval from "../../UI/Nav/NavFixedInterval";
 import styled from "styled-components";
-
 import { useForm } from "react-hook-form";
+
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
+import { Report } from "notiflix/build/notiflix-report-aio";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginFormBox = styled.form`
   background-color: #252525;
@@ -52,41 +57,78 @@ const Input = styled.input`
   border: none;
 `;
 
-function SingIn() {
+function SignUp(props) {
+  const navigate = useNavigate();
+
+  const goToSignIn = () => {
+    navigate("/singIn");
+  }
+
+  const userSignInfo = (data) =>{
+    props.userSignUp(data);
+  }
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    Confirm.show(
+      "알림",
+      "회원가입 하시겠습니까?",
+      "Yes",
+      "No",
+      () => {
+        Report.success(
+          "회원가입 완료!",
+          "축하합니다. 회원가입에 성공했습니다.",
+          "확인",
+          userSignInfo(data),
+          goToSignIn()
+        );
+      },
+      () => {
+        Report.info("알림 정보", "회원가입이 취소되었습니다.", "확인");
+      }
+    );
+  };
 
   return (
     <NavFixedInterval>
       <Alignment>
         <LoginFormBox onSubmit={handleSubmit(onSubmit)}>
-          <FormTitle>로그인</FormTitle>
+          <FormTitle>회원가입</FormTitle>
 
           <Input
+            type="text"
             {...register("id", {
-              required: "이메일 또는 아이디를 입력해주세요.",
+              required: true,
+              pattern: /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/i,
             })}
             aria-invalid={errors.id ? "true" : "false"}
-            placeholder="이메일 또는 아이디"
+            placeholder="이메일을 입력해주세요."
           />
-          {errors.id && <InputErrors>{errors.id.message}</InputErrors>}
+          {errors.id && (
+            <InputErrors>이메일 형식이 옳바르지 않습니다.</InputErrors>
+          )}
 
           <Input
-            {...register("pwd", { required: "비밀번호를 입력해주세요." })}
+            type="password"
+            {...register("pwd", {
+              required: "비밀번호를 입력해주세요.",
+            })}
             aria-invalid={errors.pwd ? "true" : "false"}
             placeholder="비밀번호"
           />
 
           {errors.pwd && <InputErrors>{errors.pwd.message}</InputErrors>}
-          <FormSubmitButton type="submit" margintop="40px" value="로그인" />
+          <FormSubmitButton type="submit" margintop="40px" value="회원가입"/>
         </LoginFormBox>
       </Alignment>
     </NavFixedInterval>
   );
 }
 
-export default SingIn;
+export default SignUp;

@@ -37,7 +37,7 @@ const ReviewContainer = (props) => {
       <div className="detailsTitle">평점 : {(props.movieDetails.vote_average / 2).toFixed(1)}</div>
 
       <ReviewBgBox>
-        <ReviewStar width={(props.movieDetails.vote_average * 10).toFixed(1)} />
+        <ReviewStar width={(props?.movieDetails.vote_average * 10).toFixed(1)} />
       </ReviewBgBox>
     </VoteAverageBox>
   );

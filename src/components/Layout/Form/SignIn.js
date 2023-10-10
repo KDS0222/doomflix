@@ -1,11 +1,10 @@
 import Alignment from "../../UI/Alignment";
 import NavFixedInterval from "../../UI/Nav/NavFixedInterval";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import { Report } from "notiflix";
 
-import { Notify } from "notiflix/build/notiflix-notify-aio";
-import { Confirm } from "notiflix/build/notiflix-confirm-aio";
-import { Report } from "notiflix/build/notiflix-report-aio";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const LoginFormBox = styled.form`
   background-color: #252525;
@@ -55,50 +54,40 @@ const Input = styled.input`
   border: none;
 `;
 
-function SingUp() {
+function SignIn(props) {
+  const navigate = useNavigate();
+
+  const goToMain = () => {
+    navigate("/");
+  };
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const onSubmit = (data) => {
-    Confirm.show(
-      "알림",
-      "회원가입 하시겠습니까?",
-      "Yes",
-      "No",
-      () => {
-        Report.success(
-          "회원가입 완료!",
-          "축하합니다. 회원가입에 성공했습니다.",
-          "확인"
-        );
-
-      },
-      () => {
-        Report.info("알림 정보", "회원가입이 취소되었습니다.", "확인");
-      }
-    );
+    if (data.id === props.userInfo.id && data.pwd === props.userInfo.pwd) {
+      Report.success(`${data.id}님 환영합니다!`, "", "확인", goToMain());
+    } else {
+      Report.failure("아이디가 일치하지 않습니다.", "", "확인");
+    }
   };
 
   return (
     <NavFixedInterval>
       <Alignment>
         <LoginFormBox onSubmit={handleSubmit(onSubmit)}>
-          <FormTitle>회원가입</FormTitle>
+          <FormTitle>로그인</FormTitle>
 
           <Input
-            type="text"
             {...register("id", {
-              required: true,
-              pattern: /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/i,
+              required: "이메일 또는 아이디를 입력해주세요.",
             })}
             aria-invalid={errors.id ? "true" : "false"}
-            placeholder="이메일을 입력해주세요."
+            placeholder="이메일 또는 아이디"
           />
-          {errors.id && (
-            <InputErrors>이메일 형식이 옳바르지 않습니다.</InputErrors>
-          )}
+          {errors.id && <InputErrors>{errors.id.message}</InputErrors>}
 
           <Input
             type="password"
@@ -108,11 +97,15 @@ function SingUp() {
           />
 
           {errors.pwd && <InputErrors>{errors.pwd.message}</InputErrors>}
-          <FormSubmitButton type="submit" margintop="40px" value="회원가입" />
+          <FormSubmitButton
+            type="submit"
+            margintop="40px"
+            value="로그인"
+          />
         </LoginFormBox>
       </Alignment>
     </NavFixedInterval>
   );
 }
 
-export default SingUp;
+export default SignIn;
