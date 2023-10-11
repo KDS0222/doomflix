@@ -11,12 +11,20 @@ const NavBottonContainer = styled.div`
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    max-width: 90%;
+  }
 `;
 
 const Logo = styled.h1`
   font-size: 36px;
   font-weight: bold;
   color: red;
+
+  @media (max-width: 1200px) {
+    font-size: 32px;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -40,6 +48,10 @@ const SearchInput = styled.input`
 
   &::placeholder{
     color: #ffffff;
+  }
+
+  @media (max-width: 480px) {
+    width: 100px;
   }
 `;
 

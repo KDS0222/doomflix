@@ -25,7 +25,6 @@ const ContentsSlide = (props) => {
   return (
     <div>
       <Swiper
-        slidesPerView={5}
         spaceBetween={20}
         autoplay={{
           delay: 2500,
@@ -37,6 +36,23 @@ const ContentsSlide = (props) => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="Main__mySwiper"
+        breakpoints={{
+          // when window width is >= 320px
+          1200:{
+            slidesPerView: 5,
+            spaceBetween: 20
+          },
+
+          700:{
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+
+          480:{
+            slidesPerView: 2,
+            spaceBetween: 20
+          },
+        }}
       >
         {props.popular &&
           props.popular.map((value) => (

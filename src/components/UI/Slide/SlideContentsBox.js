@@ -9,6 +9,10 @@ const ContentTitle = styled.div`
   color: #ffffff;
   margin-bottom: ${(props) => props.marginBottom || 0};
   margin-top: 40px;
+
+  @media (max-width: 1200px) {
+    font-size: 20px;
+  }
 `;
 
 const SlideContentsBox = (props) => {
