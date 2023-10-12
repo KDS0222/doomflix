@@ -57,7 +57,7 @@ const ContentsSlide = (props) => {
         {props.popular &&
           props.popular.map((value) => (
             <SwiperSlide key={uuid()}>
-              <Link onClick={scrollMoveHandler} to={"/details/" + value.id} key={uuid()}>
+              <Link state={value} onClick={scrollMoveHandler} to={"/details/" + value.id} key={uuid()}>
                 <SlideImg
                   key={uuid()}
                   src={"https://image.tmdb.org/t/p/w500" + value.poster_path}

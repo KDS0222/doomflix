@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import NavFixedInterval from "../Nav/NavFixedInterval";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MovieDetailBox from "./MovieDetailBox";
 import SlideContentsBox from "../Slide/SlideContentsBox";
@@ -10,6 +10,10 @@ const DetailsBox = styled.div`
   background-color: #000000;
   width: 100%;
   height: calc(100vh - 100px);
+
+  @media (max-width: 1200px) {
+    height: 100%;
+  }
 `;
 
 const DetailsContainer = styled.div`
@@ -18,12 +22,21 @@ const DetailsContainer = styled.div`
   margin: 0 auto;
   display: flex;
   background-color: #000000;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    width: 90%;
+  }
 `;
 
 const Details = (props) => {
   const [movieDetails, setMovieDetails] = useState("");
   const [video, setVideo] = useState("");
   const params = useParams();
+
+  const location = useLocation();
+
+  console.log(location.state.id);
 
   const DetailsFetch = async () => {
     const response = await fetch(

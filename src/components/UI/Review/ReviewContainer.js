@@ -9,6 +9,10 @@ const VoteAverageBox = styled.div`
   font-weight: bold;
   display: flex;
   align-items: center;
+
+  @media (max-width: 1200px) {
+    font-size: 16px;
+  }
 `;
 
 const ReviewBgBox = styled.div`

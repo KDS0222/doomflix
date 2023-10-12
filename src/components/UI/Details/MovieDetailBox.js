@@ -9,18 +9,31 @@ const MovieDetailInfoBox = styled.div`
   & *:not(:first-child) {
     margin-top: 15px;
   }
+
+  @media (max-width: 1200px) {
+    margin-left: 0px;
+  }
 `;
 
 const Overview = styled.p`
   color: #ffffff;
   font-size: 18px;
   line-height: 28px;
+
+  @media (max-width: 1200px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 const MovieTitle = styled.h1`
   color: #ffffff;
   font-size: 36px;
   font-weight: bold;
+
+  @media (max-width: 1200px) {
+    font-size: 24px;
+  }
 `;
 
 const GenresBox = styled.span`
@@ -32,6 +45,11 @@ const GenresBox = styled.span`
 const YoubuteVideo = styled.iframe`
   width: 100%;
   height: 500px;
+
+  @media (max-width: 1200px) {
+    display: block;
+    margin: 0 auto;
+  }
 `
 
 const MovieDetailBox = (props) => {

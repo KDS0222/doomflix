@@ -17,6 +17,10 @@ const LoginFormBox = styled.form`
   align-items: center;
   flex-direction: column;
   padding-top: 40px;
+
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 `;
 
 const FormSubmitButton = styled.input`

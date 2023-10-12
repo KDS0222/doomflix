@@ -8,6 +8,10 @@ const WrapperBox = styled.div`
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
   margin: ${(props) => props.margin};
+
+  @media (max-width: 1200px) {
+    max-width: 90%;
+  }
 `;
 
 const Wrapper = (props) => {
