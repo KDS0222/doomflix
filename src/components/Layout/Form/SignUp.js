@@ -64,13 +64,14 @@ const Input = styled.input`
 function SignUp(props) {
   const navigate = useNavigate();
 
-  const goToSignIn = () => {
+  const goToSignIn = (userId) => {
+    localStorage.setItem("userInfo", userId);
     navigate("/singIn");
-  }
+  };
 
-  const userSignInfo = (data) =>{
+  const userSignInfo = (data) => {
     props.userSignUp(data);
-  }
+  };
 
   const {
     register,
@@ -90,7 +91,7 @@ function SignUp(props) {
           "축하합니다. 회원가입에 성공했습니다.",
           "확인",
           userSignInfo(data),
-          goToSignIn()
+          goToSignIn(data.id)
         );
       },
       () => {
@@ -128,7 +129,7 @@ function SignUp(props) {
           />
 
           {errors.pwd && <InputErrors>{errors.pwd.message}</InputErrors>}
-          <FormSubmitButton type="submit" margintop="40px" value="회원가입"/>
+          <FormSubmitButton type="submit" margintop="40px" value="회원가입" />
         </LoginFormBox>
       </Alignment>
     </NavFixedInterval>

@@ -34,10 +34,6 @@ const Details = (props) => {
   const [video, setVideo] = useState("");
   const params = useParams();
 
-  const location = useLocation();
-
-  console.log(location.state.id);
-
   const DetailsFetch = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${params.id}?api_key=1efe7e9dcfe999d6d25a99f91164d434`

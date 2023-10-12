@@ -5,6 +5,8 @@ import { Report } from "notiflix";
 
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { loginedState } from "../../../atoms/atom";
 
 const LoginFormBox = styled.form`
   background-color: #252525;
@@ -59,6 +61,8 @@ const Input = styled.input`
 `;
 
 function SignIn(props) {
+  const [logined, setlogined] = useRecoilState(loginedState);
+
   const navigate = useNavigate();
 
   const goToMain = () => {
@@ -72,7 +76,11 @@ function SignIn(props) {
   } = useForm();
   const onSubmit = (data) => {
     if (data.id === props.userInfo.id && data.pwd === props.userInfo.pwd) {
-      Report.success(`${data.id}님 환영합니다!`, "", "확인", goToMain());
+      Report.success(`${data.id}님 환영합니다!`,
+      "",
+      "확인",
+      setlogined(true),
+      goToMain());
     } else {
       Report.failure("아이디가 일치하지 않습니다.", "", "확인");
     }
@@ -101,11 +109,7 @@ function SignIn(props) {
           />
 
           {errors.pwd && <InputErrors>{errors.pwd.message}</InputErrors>}
-          <FormSubmitButton
-            type="submit"
-            margintop="40px"
-            value="로그인"
-          />
+          <FormSubmitButton type="submit" margintop="40px" value="로그인" />
         </LoginFormBox>
       </Alignment>
     </NavFixedInterval>
